@@ -556,11 +556,8 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 				}
 
 				//Turn goes up, unless there is a tie
-				if(turnNum == 42){
-					for (GUIPiece piece : pieces) {
-						piece.setIcon(null);
-						topGlass.remove(piece);
-					}
+				if(turnNum == 42){    //removed unnecessary loop since blanking of panel is not required 
+						      //when the game ends with a winner it will reset the board
 					gui.setWinner("It's a tie!");
 					board.clear();
 					initNewGame();
@@ -633,7 +630,7 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 	//GAME OVER
 	@Override
 	public void gameOver(Player winner, ScoreChart scores, ReadableBoard end) {
-		if(turnNum < 41){
+		if(turnNum < 42){//changed to a 42 so for the possibility a win is achieved on the last play it will be recorded
 			if(game.getCurrentPlayer() == players[0]){
 				gui.setScore1(gui.getScore1()+1);
 			}

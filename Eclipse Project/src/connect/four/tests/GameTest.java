@@ -12,6 +12,7 @@ import connect.four.Game;
 import connect.four.board.Board;
 import connect.four.board.ReadWritableBoard;
 import connect.four.board.TestableBoard;
+import connect.four.gui.GUIPlayer;
 import connect.four.player.ConsolePlayer;
 import connect.four.player.Player;
 
@@ -19,6 +20,7 @@ public class GameTest {
 	private Game gameObj = null;
 	private Player p1 = null;
 	private Player p2 = null;
+	private Board b = null;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -30,27 +32,30 @@ public class GameTest {
 
 	@Before
 	public void setUp() throws Exception {
+		// Set up Board Object
+		b = new Board(7, 6);
+		
 		// Set up Player Objects
 		p1 = new ConsolePlayer("Player 1");
 		p2 = new ConsolePlayer("Player 2");
 		
 		// Set up Game Object
-		gameObj = new Game(new Player[] {p1, p2}, new Board(7, 6), 4);
+		gameObj = new Game(new Player[] {p1, p2}, b, 4);
 	}
 
 	@After
 	public void tearDown() throws Exception {
+	}
+	
+	@Test
+	public void testGetCurrentPlayer_IntialValues() {
+		assertTrue(gameObj.getCurrentPlayer() == p1);
 	}
 
 	@Test
 	public void testGetScore_InitialValues() {
 		assertTrue(gameObj.getScore(p1) == 0);
 		assertTrue(gameObj.getScore(p2) == 0);
-	}
-
-	@Test
-	public void testGetCurrentPlayer() {
-		
 	}
 
 	@Test
@@ -93,5 +98,10 @@ public class GameTest {
 		assertTrue(Game.detectWinner(testBoard, 4) == null);
 		testBoard.setPlayerPiece(3, 3, p1);
 		assertTrue(Game.detectWinner(testBoard, 4) == p1);
+	}
+	
+	@Test
+	public void testGetBoard() {
+		assertTrue(gameObj.getBoard() == b);
 	}
 }

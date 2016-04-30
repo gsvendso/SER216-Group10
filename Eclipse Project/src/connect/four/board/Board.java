@@ -11,6 +11,7 @@ public class Board implements ReadWritableBoard {
         m_contents = new Player[width][height];
         m_moveCount = 0;
     }
+    
     public Board(ReadableBoard copy) {
         if (copy instanceof Board) {
             Board copyB = (Board) copy;
@@ -21,7 +22,8 @@ public class Board implements ReadWritableBoard {
             for (int i = 0; i != l; ++i) {
                 m_contents[i] = Arrays.copyOf(copyB.m_contents[i], m);
             }
-        } else {
+        }
+        else {
             int l = copy.getWidth();
             int m = copy.getHeight();
             m_contents = new Player[l][m];
@@ -31,7 +33,9 @@ public class Board implements ReadWritableBoard {
                     m_contents[i][j] = copy.whoPlayed(i, j);
                 }
             }
+            
         }
+        
     }
     public @Override Player whoPlayed(int x, int y) {
         return m_contents[x][y];

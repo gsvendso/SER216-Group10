@@ -225,6 +225,38 @@ public class BoardTest {
         Assert.assertEquals("Must be an empty board.", 0, board.getMoveCount());
     }//end testClear
 
+    @Test
+	public void whoPlayedTest() {
+		Board aBoard = new Board(6,7);
+		Player aPlayer = new ConsolePlayer("Bandit");
+		Player bPlayer = new ConsolePlayer("Chadd");
+		
+		// Make several moves and check results
+		aBoard.play(1, aPlayer);
+		aBoard.play(1, bPlayer);
+		aBoard.play(1, aPlayer);
+		aBoard.play(1, bPlayer);
+		
+		assertTrue(aBoard.whoPlayed(1, 0).getName().equals("Bandit"));
+		assertTrue(aBoard.whoPlayed(1, 1).getName().equals("Chadd"));
+		assertTrue(aBoard.whoPlayed(1, 2).getName().equals("Bandit"));
+		assertTrue(aBoard.whoPlayed(1, 3).getName().equals("Chadd"));
+	}
+    
+    @Test
+    public void getMoveCountTest() {
+		Board aBoard = new Board(6,7);
+		Player aPlayer = new ConsolePlayer("Peanut");
+		
+		assertTrue(aBoard.getMoveCount() == 0);
+		
+		aBoard.play(2, aPlayer);
+		aBoard.play(2, aPlayer);
+		aBoard.play(2, aPlayer);
+		
+		assertTrue(aBoard.getMoveCount() == 3);
+	}
+    
     private ConsolePlayer createConsolePlayer() {
         return new ConsolePlayer("HumanPlayer");
     }//end createConsolePlayer

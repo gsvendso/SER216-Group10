@@ -2,6 +2,8 @@ package connect.four.tests;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -9,8 +11,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import connect.four.Game;
+import connect.four.ScoreChart;
+import connect.four.ScoreChart.Listener;
 import connect.four.board.Board;
 import connect.four.board.ReadWritableBoard;
+import connect.four.board.ReadableBoard;
 import connect.four.board.TestableBoard;
 import connect.four.gui.GUIPlayer;
 import connect.four.player.ConsolePlayer;
@@ -56,6 +61,26 @@ public class GameTest {
 	public void testGetScore_InitialValues() {
 		assertTrue(gameObj.getScore(p1) == 0);
 		assertTrue(gameObj.getScore(p2) == 0);
+	}
+	
+	@Test
+	public void testGetPlayers() {
+		List<Player> list = gameObj.getPlayers();
+		assertTrue(list != null);
+		assertTrue(list.contains(p1));
+		assertTrue(list.contains(p2));
+	}
+	
+	@Test
+	public void testListoners() {
+		Listener listenerObj = new Listener() {
+			
+			@Override
+			public void gameOver(Player winner, ScoreChart scores, ReadableBoard end) {
+			}
+		};
+		gameObj.registerListener(listenerObj);
+		gameObj.unregisterListener(listenerObj);
 	}
 
 	@Test

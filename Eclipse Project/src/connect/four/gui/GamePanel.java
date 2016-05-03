@@ -79,6 +79,7 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
                 col7 = new javax.swing.JPanel();
                 player2NameBox = new javax.swing.JLabel();
                 bgImage = new javax.swing.JLabel();
+                mainMenu = new javax.swing.JButton("Main Menu");
 
                 setBackground(new java.awt.Color(0, 0, 0));
                 setPreferredSize(new java.awt.Dimension(1280, 800));
@@ -112,6 +113,17 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
                 turnDisplay.setText("jLabel2");
                 add(turnDisplay);
                 turnDisplay.setBounds(1070, 150, 200, 40);
+
+                mainMenu.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
+                mainMenu.setText("MAIN MENU");
+                add(mainMenu);
+                mainMenu.setBounds(1070, 270, 200, 40);
+
+                mainMenu.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                mainMenuActionPerformed(evt);
+                        }
+                });
 
                 col1.setBackground(new java.awt.Color(102, 102, 102));
                 col1.setOpaque(false);
@@ -263,7 +275,14 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
                 bgImage.setBounds(0, 150, 1070, 590);
         }// </editor-fold>//GEN-END:initComponents
 
-        private void col1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_col1MouseEntered
+        protected void mainMenuActionPerformed(ActionEvent evt) {
+    		gui.remove(this);
+    		gui.addMainMenu();
+    		gui.revalidate();
+    		gui.repaint();
+        }
+
+		private void col1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_col1MouseEntered
 		calcNewPos(0);
 		calcWidth(0);
         }//GEN-LAST:event_col1MouseEntered
@@ -402,7 +421,8 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 						player.getBoard().play(getColumnNum(), player);
 					}
 					else if(game.getCurrentPlayer() == players[1]){
-						GUIWrapperPlayer player = (GUIWrapperPlayer)game.getCurrentPlayer();						   player.getBoard().play(getColumnNum(), player);
+						GUIWrapperPlayer player = (GUIWrapperPlayer)game.getCurrentPlayer();						   
+						player.getBoard().play(getColumnNum(), player);
 					}
 					
 				}
@@ -424,7 +444,8 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 						player.getBoard().play(getColumnNum(), player);
 					}
 					else if(game.getCurrentPlayer() == players[1]){
-						GUIWrapperPlayer player = (GUIWrapperPlayer)game.getCurrentPlayer();						   player.getBoard().play(getColumnNum(), player);
+						GUIWrapperPlayer player = (GUIWrapperPlayer)game.getCurrentPlayer();						   
+						player.getBoard().play(getColumnNum(), player);
 					}
 				}
 				
@@ -698,5 +719,6 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
         private javax.swing.JLabel turnDisplay;
         // End of variables declaration//GEN-END:variables
 
+        private javax.swing.JButton mainMenu;
 	
 }

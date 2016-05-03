@@ -134,7 +134,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
                                 .addContainerGap(352, Short.MAX_VALUE))
                 );
 
-                bgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/main_menu.png"))); // NOI18N
+                bgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/main_menu.png"))); // NOI18N
                 bgImage.setText("jLabel1");
                 bgImage.setIgnoreRepaint(true);
                 add(bgImage);

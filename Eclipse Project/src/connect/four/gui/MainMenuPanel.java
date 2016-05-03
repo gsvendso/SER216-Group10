@@ -40,6 +40,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
                 jLabel2 = new javax.swing.JLabel();
                 butPlay = new javax.swing.JButton();
                 jtComputerToggle = new javax.swing.JToggleButton();
+                bgImage = new javax.swing.JLabel();
 
                 setBackground(new java.awt.Color(0, 0, 0));
 
@@ -132,6 +133,12 @@ public class MainMenuPanel extends javax.swing.JPanel {
                                 .addComponent(butPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(352, Short.MAX_VALUE))
                 );
+
+                bgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/main_menu.png"))); // NOI18N
+                bgImage.setText("jLabel1");
+                bgImage.setIgnoreRepaint(true);
+                add(bgImage);
+                bgImage.setBounds(50, 150, 1200, 590);
         }// </editor-fold>//GEN-END:initComponents
 
         private void tfplayer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfplayer2ActionPerformed
@@ -173,6 +180,7 @@ public class MainMenuPanel extends javax.swing.JPanel {
 	
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
+		private javax.swing.JLabel bgImage;
         private javax.swing.JButton butPlay;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel2;

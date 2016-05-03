@@ -152,19 +152,18 @@ public class MainMenuPanel extends javax.swing.JPanel {
         }//GEN-LAST:event_butPlayActionPerformed
 
         private void jtComputerToggleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtComputerToggleActionPerformed
-                if(!isEnabled){
-			tfplayer2.setText("Computer");
-			tfplayer2.setEditable(false);
-			isEnabled = true;
-		}
-		else{
-			tfplayer2.setText("Player 2");
-			tfplayer2.setEditable(true);
-			isEnabled = false;
-		}
-		
-	
-		
+	        if(!isEnabled){
+				tfplayer2.setText("Computer");
+				tfplayer2.setEditable(false);
+				jtComputerToggle.setText("Play Against Player");
+				isEnabled = true;
+			}
+			else{
+				tfplayer2.setText("Player 2");
+				tfplayer2.setEditable(true);
+				jtComputerToggle.setText("Play Against Computer");
+				isEnabled = false;
+			}
         }//GEN-LAST:event_jtComputerToggleActionPerformed
 
 	public boolean getIsEnabled(){

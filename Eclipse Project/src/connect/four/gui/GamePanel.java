@@ -268,7 +268,7 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
                 add(topGlass);
                 topGlass.setBounds(0, 0, 1280, 800);
 
-                bgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/board.png"))); // NOI18N
+                bgImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/board.png"))); // NOI18N
                 bgImage.setText("jLabel1");
                 bgImage.setIgnoreRepaint(true);
                 add(bgImage);
@@ -670,6 +670,15 @@ public class GamePanel extends javax.swing.JPanel implements ScoreChart.Listener
 					initNewGame();
 					gui.addGameOver();
 					justWon = true;
+		}
+		else
+		{
+			gui.setScore1(gui.getScore1()+0);
+			gui.setScore2(gui.getScore2()+0);
+			gui.setWinner("its a tie!");
+			board.clear();
+			initNewGame();
+			gui.addGameOver();
 		}
 	}
 	
